@@ -169,8 +169,19 @@ def create_pdf_download(fig):
         pdf.savefig(fig, bbox_inches='tight', dpi=300)
     pdf_buffer.seek(0)
     return pdf_buffer.getvalue()
+
 st.title("📊 Booking Analysis Dashboard")
-st.markdown("Upload your CSV file to analyze booking data")
+
+# Add description before file upload
+st.markdown("""
+### 📋 Data Requirements
+Please download a file from Travellanda system with only three columns:
+- **Booking Week**
+- **Booking Month** 
+- **Booking Status**
+
+Upload your CSV file to analyze booking data
+""")
 
 # File upload
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
@@ -265,6 +276,6 @@ if uploaded_file is not None:
                 st.dataframe(pivot_table, use_container_width=True)
                                     
     except Exception as e:
-            st.error(f"An error occurred while processing the file: {str(e)}")
-    else:
-        st.info("Please upload a CSV file to get started")
+        st.error(f"An error occurred while processing the file: {str(e)}")
+else:
+    st.info("Please upload a CSV file to get started")
