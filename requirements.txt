@@ -1,0 +1,7 @@
+streamlit
+matplotlib
+pandas
+matplotlib.pyplot
+io
+base64
+matplotlib.backends.backend_pdf 
